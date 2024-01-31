@@ -18,7 +18,7 @@ function App() {
     } catch(error) {
       console.log(error);
     }
-   // console.log(data);
+    // console.log(data);
     // console.log(channels); // har inte hunnit få datan här..?
   }
   
@@ -26,15 +26,13 @@ function App() {
     getChannels();
     
   }, [])
-  //getChannels();
+  // console.log(channels);
 
   function handleSearchTerm(e) {
-    const value = e.target.value; // Trim whitespace from both ends
+    const value = e.target.value; 
 
     setSearchTerm(value);
   }
-
-  // console.log(channels);
 
   // fake "loading" boolean to display skeleton when 'loading' is true
   const [loading, setLoading] = useState(false);
@@ -52,8 +50,7 @@ function App() {
    // console.log(channel.liveaudio.url);
     return channel.name.toLowerCase().includes(searchTerm.toLowerCase()) && searchTerm != ""; // returnera hela objektet (item) där name matchar!
   })
-  // skapa en list med filteredChannels som liknar forEach i tidigare workshop?
-
+ 
   return (
     <>
       <div>
@@ -69,7 +66,7 @@ function App() {
           ) : (
             <ul> 
               {filteredChannels.map ( (channel)  => { 
-                return <Channel key={channel.id} channel={channel}/>
+                return <Channel channel={channel}/>
               })} 
             </ul>
           )
